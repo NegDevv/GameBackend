@@ -1,0 +1,13 @@
+C:\Users\Elkku\Documents\GameBackend\Assignment1\bin\Debug\netcoreapp3.1\Assignment1.exe
+C:\Users\Elkku\Documents\GameBackend\Assignment1\bin\Debug\netcoreapp3.1\Assignment1.deps.json
+C:\Users\Elkku\Documents\GameBackend\Assignment1\bin\Debug\netcoreapp3.1\Assignment1.runtimeconfig.json
+C:\Users\Elkku\Documents\GameBackend\Assignment1\bin\Debug\netcoreapp3.1\Assignment1.runtimeconfig.dev.json
+C:\Users\Elkku\Documents\GameBackend\Assignment1\bin\Debug\netcoreapp3.1\Assignment1.dll
+C:\Users\Elkku\Documents\GameBackend\Assignment1\bin\Debug\netcoreapp3.1\Assignment1.pdb
+C:\Users\Elkku\Documents\GameBackend\Assignment1\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Elkku\Documents\GameBackend\Assignment1\obj\Debug\netcoreapp3.1\Assignment1.csprojAssemblyReference.cache
+C:\Users\Elkku\Documents\GameBackend\Assignment1\obj\Debug\netcoreapp3.1\Assignment1.AssemblyInfoInputs.cache
+C:\Users\Elkku\Documents\GameBackend\Assignment1\obj\Debug\netcoreapp3.1\Assignment1.AssemblyInfo.cs
+C:\Users\Elkku\Documents\GameBackend\Assignment1\obj\Debug\netcoreapp3.1\Assignment1.csproj.CopyComplete
+C:\Users\Elkku\Documents\GameBackend\Assignment1\obj\Debug\netcoreapp3.1\Assignment1.dll
+C:\Users\Elkku\Documents\GameBackend\Assignment1\obj\Debug\netcoreapp3.1\Assignment1.pdb
