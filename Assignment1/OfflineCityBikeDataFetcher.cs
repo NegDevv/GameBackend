@@ -28,10 +28,12 @@ namespace Assignment1
             }
             //Console.WriteLine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent + "\\bikedata.txt");
 
+
+            // Visual studio code version for getting the bikedata.txt file
             string text = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "\\bikedata.txt");
 
 
-            // Visual studio version of getting the bikedata.txt file
+            // Visual studio version for getting the bikedata.txt file
             //string text = System.IO.File.ReadAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent + "\\bikedata.txt");
 
             //Console.WriteLine(text);
