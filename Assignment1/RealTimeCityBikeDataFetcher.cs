@@ -27,10 +27,11 @@ namespace Assignment1
 
     class RealTimeCityBikeDataFetcher : ICityBikeDataFetcher
     {
-        readonly string apiUrl = "http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental";
-        string numbers = "0123456789";
         public async Task<int> GetBikeCountInStation(string stationName)
         {
+            string apiUrl = "http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental";
+            string numbers = "0123456789";
+
             for(int i = 0; i < stationName.Length; i++)
             {
 

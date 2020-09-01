@@ -43,6 +43,7 @@ namespace Assignment1
             bool found = false;
             int bikeCount = 0;
 
+            // Parser
             for (int i = 0; i < text.Length; i++)
             {
                 if (text[i] == '\n' && text[i - 1] == '\r')
@@ -85,6 +86,17 @@ namespace Assignment1
                 {
                     number += text[i];
                 }
+            }
+
+
+            // For the last element 
+            if (number.Length > 0)
+            {
+                if (!int.TryParse(number, out bikeCount))
+                {
+                    Console.WriteLine("Couldnt parse number from string");
+                }
+
             }
 
             // If the corresponding station wasnt found throw an NotFoundException
