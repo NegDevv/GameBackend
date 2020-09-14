@@ -13,9 +13,9 @@ namespace GameWebApi
 
         private readonly IRepository repo;
 
-        public PlayersController(IRepository fileRep)
+        public PlayersController(IRepository _repo)
         {
-            repo = fileRep;
+            repo = _repo;
         }
 
         [HttpGet("{id:guid}")]
