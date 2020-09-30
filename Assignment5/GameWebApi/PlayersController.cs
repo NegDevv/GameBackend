@@ -11,7 +11,6 @@ namespace GameWebApi
     [Route("players")]
     public class PlayersController : ControllerBase
     {
-
         private readonly IRepository repo;
 
         public PlayersController(IRepository _repo)
@@ -25,12 +24,10 @@ namespace GameWebApi
             return repo.Get(id);
         }
 
-        //[HttpGet("{minScore:int}")]
         public Task<Player[]> GetPlayersWithMinScore([FromQuery]int minScore)
         {
             Console.WriteLine("GetPlayersWithMinScore");
             Console.WriteLine("minScore: " + minScore);
-            //return null;
             return repo.GetPlayersWithMinScore(minScore);
         }
         
@@ -39,16 +36,13 @@ namespace GameWebApi
         {
             Console.WriteLine("GetPlayersWithName");
             Console.WriteLine("name: " + name);
-            //return null;
             return repo.GetPlayerWithName(name);
         }
 
-        //[HttpGet("{tag}")]
         public Task<Player[]> GetPlayersWithTag(string tag)
         {
             Console.WriteLine("GetPlayersWithTag");
             Console.WriteLine("name: " + tag);
-            //return null;
             return repo.GetPlayersWithTag(tag);
         }
 
@@ -56,7 +50,6 @@ namespace GameWebApi
         {
             Console.WriteLine("GetPlayersWithAtLeastItemLevel");
             Console.WriteLine("min item level: " + level);
-            //return null;
             return repo.GetPlayersWithAtLeastItemLevel(level);
         }
 
@@ -75,11 +68,11 @@ namespace GameWebApi
         }
 
         [HttpGet("")]
-        public Task<Player[]> GetAll([FromQuery]int minScore, [FromQuery]string tag, [FromQuery] int itemLevel, [FromQuery] int minItemCount)
+        public Task<Player[]> GetAll([FromQuery]int? minScore, [FromQuery]string tag, [FromQuery] int itemLevel, [FromQuery] int minItemCount)
         {
-            if(minScore > 0)
+            if(minScore.HasValue)
             {
-                return GetPlayersWithMinScore(minScore);
+                return GetPlayersWithMinScore(minScore.Value);
             }
             else if(tag != null)
             {
@@ -118,7 +111,6 @@ namespace GameWebApi
             p.CreationTime = DateTime.UtcNow;
             p.Tags = player.Tags;
             List<Item> items = new List<Item>();
-            //Item[] items = new Item[0];
             p.Items = items;
             return repo.Create(p);
         }
@@ -146,7 +138,6 @@ namespace GameWebApi
             return repo.IncrementPlayerScore(id, inc);
         }
 
-        
         [HttpPost("update/{id:guid}/addItem")]
         public Task<Player> AddNewItem(Guid id, [FromBody] NewItem newItem)
         {
@@ -158,10 +149,7 @@ namespace GameWebApi
         [HttpDelete("{id:guid}/item")]
         public Task<Player> TradeItem(Guid id, [FromBody] Guid itemId)
         {
-            //Guid itemId = new Guid(itemIdString);
             Console.WriteLine("TradeItem");
-            //Console.WriteLine("Item: " + newItem);
-            // Problem if submitting empty body: updates score to 0 
             return repo.TradeItem(id, itemId);
         }
 
@@ -173,6 +161,5 @@ namespace GameWebApi
 
         [HttpOptions]
         public void Options() { }
-
     }
 }

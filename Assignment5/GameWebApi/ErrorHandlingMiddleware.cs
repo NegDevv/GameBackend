@@ -22,9 +22,6 @@ namespace GameWebApi
             {
                 context.Response.HttpContext.Response.StatusCode = 404;
             }
-            
-
         }
-
     }
 }

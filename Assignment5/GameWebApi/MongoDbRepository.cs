@@ -25,18 +25,17 @@ namespace GameWebApi
             FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.Id, id);
             return await playersCollection.Find(filter).FirstOrDefaultAsync();
         }
+
         public async Task<Player[]> GetAll()
         {
             List<Player> p = await playersCollection.Find(new BsonDocument()).ToListAsync();
-
             return p.ToArray();
         }
 
         public async Task<Player[]> GetPlayersWithMinScore(int minScore)
         {
-            FilterDefinition<Player> filter = Builders<Player>.Filter.Gte("Score", minScore);
+            FilterDefinition<Player> filter = Builders<Player>.Filter.Gte(p => p.Score, minScore);
             List<Player> p = await playersCollection.Find(filter).ToListAsync();
-
             return p.ToArray();
         }
 
@@ -46,6 +45,7 @@ namespace GameWebApi
             Player p = await playersCollection.Find(filter).FirstAsync();
             return p;
         }
+
         public async Task<Player[]> GetPlayersWithTag(string tag)
         {
             var filter = Builders<Player>.Filter.Eq("Tags", tag);
@@ -59,16 +59,17 @@ namespace GameWebApi
             List<Player> p = await playersCollection.Find(filter).ToListAsync();
             return p.ToArray();
         }
+
          public async Task<Player[]> GetPlayersWithMinNroItems(int itemCount)
         {
             var filter = Builders<Player>.Filter.SizeGte(p => p.Items, itemCount);
             List<Player> p = await playersCollection.Find(filter).ToListAsync();
             return p.ToArray();
         }
+
         public async Task<Player[]> GetTop10Players()
         {
             SortDefinition<Player> sortDef = Builders<Player>.Sort.Descending(p => p.Score);
-            //IFindFluent<Player, Player> cursor = playersCollection.Find("").Sort(sortDef).Limit(10);
             List<Player> top10 = await playersCollection.Find(new BsonDocument()).Sort(sortDef).Limit(10).ToListAsync();
             return top10.ToArray();
         }
@@ -94,6 +95,7 @@ namespace GameWebApi
             Console.WriteLine("Created player with id: " + player.Id);
             return player;
         }
+
         public async Task<Player> Modify(Guid id, ModifiedPlayer player)
         {
             Player p = await Get(id);
@@ -122,7 +124,6 @@ namespace GameWebApi
                 return null;
             }
         }
-
 
         public async Task<Player> UpdatePlayerName(Guid id, string newName)
         {
@@ -201,6 +202,7 @@ namespace GameWebApi
 
             return null;
         }
+
         public async Task<Item> CreateItem(Guid playerId, NewItem newItem)
         {
             ModifiedPlayer modP = new ModifiedPlayer();
@@ -225,6 +227,7 @@ namespace GameWebApi
                 return i;
             }
         }
+
         public async Task<Item> GetItem(Guid playerId, Guid itemId)
         {
             Player p = await Get(playerId);
@@ -247,6 +250,7 @@ namespace GameWebApi
 
             return null;
         }
+
         public async Task<Item[]> GetAllItems(Guid playerId)
         {
             Player p = await Get(playerId);
@@ -266,6 +270,7 @@ namespace GameWebApi
 
             return null;
         }
+
         public async Task<Item> UpdateItem(Guid playerId, ModifiedItem item)
         {
             ModifiedItem modItem = new ModifiedItem();
@@ -299,6 +304,7 @@ namespace GameWebApi
             
             return null;
         }
+
         public async Task<Item> DeleteItem(Guid playerId, Item item)
         {
             Player p = await Get(playerId);

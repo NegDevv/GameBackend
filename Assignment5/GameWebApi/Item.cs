@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace GameWebApi
 {
-
     public class ValidateCreationDateAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -23,7 +22,6 @@ namespace GameWebApi
         }
     }
 
-    
     public enum Type 
     {
         SWORD, POTION, SHIELD
@@ -53,5 +51,4 @@ namespace GameWebApi
         [ValidateCreationDateAttribute]
         public DateTime CreationDate;
     }
-    
 }
